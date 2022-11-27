@@ -100,7 +100,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:scaleType="fitXY"
-        android:src="@drawable/chat_img"
+        android:src="@drawable/chatimg"
         app:layout_constraintBottom_toBottomOf="@+id/home_background"
         app:layout_constraintEnd_toEndOf="@+id/home_background"
         app:layout_constraintHorizontal_bias="0.172"
