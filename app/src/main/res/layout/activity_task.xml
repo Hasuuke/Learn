@@ -7,63 +7,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Screens.TaskActivity"
     android:orientation="vertical"
-    android:background="@drawable/background_main">
+    android:background="@drawable/tasks_background">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <TextView
+        android:id="@+id/tv_tasks_Header1"
         android:layout_width="match_parent"
-        android:layout_height="341dp">
+        android:layout_height="79dp"
+        android:text="Tasks"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/theme"
+        android:textSize="24dp"
+        android:paddingTop="24dp"
+        android:paddingLeft="170dp"/>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="300dp"
-            android:layout_height="82dp"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="112dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_tasks_Header2"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Choose a subject"
+        android:textColor="@color/white"
+        android:textSize="33dp"
+        android:paddingTop="14dp"
+        android:paddingLeft="16.5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="107dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnChat"
-            android:layout_width="207dp"
-            android:layout_height="202dp"
-            android:background="@drawable/chatimg"
-            android:theme="@style/Button.White"
-            android:text=""/>
+        <ImageView
+            android:id="@+id/iv_tasks_Maths"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/maths_img" />
 
-        <Button
-            android:id="@+id/btnVideos"
-            android:layout_width="204dp"
-            android:layout_height="202dp"
-            android:background="@drawable/videos_img"
-            android:theme="@style/Button.White"
-            android:text=""/>
+        <ImageView
+            android:id="@+id/iv_tasks_English"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/english_img" />
 
+        <ImageView
+            android:id="@+id/iv_tasks_Geology"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/geology_img" />
+
+        <ImageView
+            android:id="@+id/iv_tasks_Biology"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/biology_img" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="394dp" />
+
+    <LinearLayout
+        android:paddingTop="18dp"
+        android:paddingLeft="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:divider="@drawable/empty_divider">
 
         <Button
-            android:id="@+id/btnTasks"
-            android:layout_width="204dp"
-            android:layout_height="202dp"
-            android:background="@drawable/tasks_main_button"
-            android:theme="@style/Button.White"
-            android:text=""/>
+            android:id="@+id/btn_tasks_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/home_button"
+            android:text=""
+            android:theme="@style/Button.White" />
 
         <Button
-            android:id="@+id/btnShop"
-            android:layout_width="204dp"
-            android:layout_height="202dp"
-            android:background="@drawable/shop_img"
-            android:theme="@style/Button.White"
-            android:text=""/>
+            android:id="@+id/btn_tasks_videos"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/videos_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_tasks_chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/chat_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_tasks_shop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shop_button"
+            android:text=""
+            android:theme="@style/Button.White" />
     </LinearLayout>
 </LinearLayout>

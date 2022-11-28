@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="dashboard">#21467A</color>
+    <color name="theme">#004361</color>
+    <color name="grey">#515151</color>
 
 
 </resources>
