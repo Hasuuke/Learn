@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/credits_background"
+    android:orientation="vertical"
+    tools:context=".Screens.CreditsActivity">
+
+
+    <TextView
+        android:id="@+id/tv_credits_Header1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingLeft="170dp"
+        android:paddingTop="24dp"
+        android:text="Credits"
+        android:textColor="@color/theme"
+        android:textSize="24dp" />
+
+
+    <TextView
+        android:id="@+id/tvTotalCredits"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingLeft="40dp"
+        android:paddingTop="38dp"
+        android:text="You have 3600 Credits"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCredits"
+        android:layout_width="match_parent"
+        android:layout_height="451dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:divider="@drawable/empty_divider"
+        android:orientation="horizontal"
+        android:paddingLeft="45dp"
+        android:paddingTop="18dp"
+        android:showDividers="middle">
+
+        <Button
+            android:id="@+id/btn_credits_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/home_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_credits_videos"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/videos_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_credits_chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/chat_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_credits_shop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shop_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+    </LinearLayout>
+</LinearLayout>

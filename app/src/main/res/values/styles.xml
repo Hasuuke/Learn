@@ -4,4 +4,8 @@
         parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@android:color/white</item>
     </style>
+    <style name="Button.Shop"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/shopButtonColor</item>
+    </style>
 </resources>
