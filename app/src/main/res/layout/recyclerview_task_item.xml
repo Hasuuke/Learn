@@ -11,9 +11,9 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivShopType"
-            android:layout_width="71dp"
-            android:layout_height="62dp"
+            android:id="@+id/ivTaskType"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="20dp" />
 
         <LinearLayout
@@ -31,7 +31,7 @@
                 android:textSize="14dp" />
 
             <TextView
-                android:id="@+id/tvOffer"
+                android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:fontFamily="@font/roboto_medium"
@@ -62,10 +62,10 @@
                 android:textSize="11dp" />
 
             <Button
-                android:id="@+id/btnRedeemed"
+                android:id="@+id/btnSolved"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
-                android:text="Redeem"
+                android:text="Solve"
                 android:textSize="7sp"
                 android:theme="@style/Button.Shop"
                 android:typeface="sans" />

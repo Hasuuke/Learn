@@ -11,7 +11,7 @@ public class ShopItemRepository {
     private LiveData<List<ShopItem>> mAllShopItems;
 
     ShopItemRepository(Application application) {
-        ShopItemRoomDatabase db = ShopItemRoomDatabase.getDatabase(application);
+        RoomDatabase db = RoomDatabase.getShopDatabase(application);
         mShopDao = db.shopDao();
         mAllShopItems= mShopDao.getAllShopItems();
     }
@@ -28,9 +28,12 @@ public class ShopItemRepository {
 
         private ShopDao mAsyncTaskDao;
 
+
         insertAsyncTask(ShopDao dao) {
             mAsyncTaskDao = dao;
         }
+
+
 
         @Override
         protected Void doInBackground(final ShopItem... params) {
