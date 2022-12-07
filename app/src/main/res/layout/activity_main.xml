@@ -1,70 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Screens.TaskActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background_main">
+
 
     <TextView
         android:id="@+id/mainText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_extrabold"
         android:gravity="center"
         android:text="DashBoard"
         android:textColor="@color/dashboard"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        >
     </TextView>
-
-    <ImageView
-        android:id="@+id/home_background"
-        android:layout_width="400dp"
-        android:layout_height="530dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/homecolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.607"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/home_bluebackground"
-        android:layout_width="330dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="24dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/blue_color_mainscreen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainText">
-    </ImageView>
 
     <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_extrabold"
+        android:id="@+id/tv_tasks_Header2"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Welcome to learn"
         android:textColor="@color/white"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintEnd_toEndOf="@+id/home_bluebackground"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="@+id/home_bluebackground"
-        app:layout_constraintTop_toTopOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.165">
-    </TextView>
+        android:textSize="40sp"
+        android:paddingTop="30dp"
+        android:paddingStart="35dp"/>
 
     <TextView
         android:id="@+id/credits"
@@ -73,131 +42,80 @@
         android:fontFamily="@font/inter_medium"
         android:text="@string/credits"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintEnd_toEndOf="@+id/home_bluebackground"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="@+id/home_bluebackground"
-        app:layout_constraintTop_toTopOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.439">
+        android:paddingTop="30dp"
+        android:paddingStart="35dp"
+        android:textSize="25sp"
+        >
     </TextView>
 
-    <ImageView
-        android:id="@+id/btn_credits"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:src="@drawable/credits_img"
-        app:layout_constraintBottom_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintEnd_toEndOf="@+id/home_bluebackground"
-        app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="@+id/home_bluebackground"
-        app:layout_constraintTop_toTopOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.845">
-    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="40dp"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/btn_chat"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/chatimg"
-        app:layout_constraintBottom_toBottomOf="@+id/home_background"
-        app:layout_constraintEnd_toEndOf="@+id/home_background"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toStartOf="@+id/home_background"
-        app:layout_constraintTop_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.121">
-    </ImageView>
 
-    <ImageView
-        android:id="@+id/btn_videos"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/videos_img"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/home_background"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="@+id/home_background"
-        app:layout_constraintTop_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.121">
-    </ImageView>
+        <ImageView
+            android:id="@+id/credits_btn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:paddingRight="230dp"
+            app:srcCompat="@drawable/credits_img" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/btn_shop"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/shop_img"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/home_background"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="@+id/home_background"
-        app:layout_constraintTop_toBottomOf="@+id/home_bluebackground"
-        app:layout_constraintVertical_bias="0.687">
-    </ImageView>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="400dp"
-        android:layout_height="65dp"
-        android:src="@drawable/menu_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/navi_home"
-        android:layout_width="30dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingStart="15dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="240dp"
-        android:src="@drawable/home_button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
-    </ImageView>
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/navi_video"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/videos_button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
-    </ImageView>
+        <ImageView
+            android:id="@+id/btn_chat"
+            android:layout_width="153dp"
+            android:layout_height="155dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/chatimg">
+        </ImageView>
 
-    <ImageView
-        android:id="@+id/navi_chat"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/chat_button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.605"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
-    </ImageView>
+        <ImageView
+            android:id="@+id/btn_videos"
+            android:layout_width="210dp"
+            android:layout_height="157dp"
+            android:paddingStart="50dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/videos_img">
+        </ImageView>
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/navi_shop"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/shop_button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.829"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
-    </ImageView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingStart="15dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/btn_task"
+            android:layout_width="153dp"
+            android:layout_height="155dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shop_img">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/btn_shop"
+            android:layout_width="210dp"
+            android:layout_height="157dp"
+            android:paddingStart="50dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shop_img">
+
+        </ImageView>
+    </LinearLayout>
+
+
+
+</LinearLayout>
