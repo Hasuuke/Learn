@@ -28,7 +28,7 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         if (mShopItems != null) {
             ShopItem current = mShopItems.get(position);
             holder.tvName.setText(current.getmName());
-            holder.tvAmount.setText(String.valueOf(current.getmAmount()));
+            holder.tvAmount.setText(String.valueOf(current.getmAmount())+ " Credits");
             holder.tvMising.setText("20 Credits missing");
             holder.tvOffer.setText(current.getmOffer());
 

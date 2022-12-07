@@ -2,18 +2,23 @@ package vn.tdtu.mad.learn.Screens;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import vn.tdtu.mad.learn.R;
+import vn.tdtu.mad.learn.ShopItem;
 import vn.tdtu.mad.learn.ShopItemListAdapter;
 import vn.tdtu.mad.learn.ShopItemViewModel;
 import androidx.lifecycle.*;
 
+import java.util.List;
+
 public class ShopActivity extends AppCompatActivity {
     private ShopItemViewModel mShopItemViewModel;
+    private TextView tvTotalCredits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,10 @@ public class ShopActivity extends AppCompatActivity {
         mShopItemViewModel = new ViewModelProvider(this).get(ShopItemViewModel.class);
         // Update the cached copy of the words in the adapter.
         mShopItemViewModel.getAllShopItems().observe(this, adapter::setShopItems);
+        tvTotalCredits = findViewById(R.id.tvTotalCredits);
+
     }
+
 
     public void showCredits(View view) {
         Intent intent = new Intent(this, CreditsActivity.class);

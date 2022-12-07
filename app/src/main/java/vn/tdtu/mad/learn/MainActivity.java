@@ -1,11 +1,14 @@
 package vn.tdtu.mad.learn;
 
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import vn.tdtu.mad.learn.Screens.ShopActivity;
+import vn.tdtu.mad.learn.Screens.TaskActivity;
 
 public class MainActivity extends AppCompatActivity {
         TextView textView;
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task);
+        Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+        MainActivity.this.startActivity(intent);
+        setContentView(R.layout.activity_shop);
     }
 }

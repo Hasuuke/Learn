@@ -15,6 +15,16 @@ public interface TaskDao {
     @Query("DELETE FROM task_items")
     void deleteAll();
 
-    @Query("SELECT * FROM task_items")
-    LiveData<List<TaskItem>> getAllTaskItems();
+    @Query("SELECT * FROM task_items WHERE Solved == :isSolved")
+    LiveData<List<TaskItem>> getAllTaskItems(Boolean isSolved);
+
+    @Query("SELECT * FROM task_items WHERE Type == :type AND Solved == :isSolved  ")
+    LiveData<List<TaskItem>> getAllMathItems(TaskTypes type, Boolean isSolved );
+
+    @Query("SELECT * FROM task_items WHERE Type == :type AND Solved == :isSolved")
+    LiveData<List<TaskItem>> getAllBiologyItems(TaskTypes type, Boolean isSolved);
+    @Query("SELECT * FROM task_items WHERE Type == :type AND Solved == :isSolved")
+    LiveData<List<TaskItem>> getAllEnglishItems(TaskTypes type, Boolean isSolved);
+    @Query("SELECT * FROM task_items WHERE Type == :type AND Solved == :isSolved")
+    LiveData<List<TaskItem>> getAllGeologyItems(TaskTypes type, Boolean isSolved);
 }

@@ -15,12 +15,13 @@ import vn.tdtu.mad.learn.TaskItemListAdapter;
 
 public class TaskActivity extends AppCompatActivity {
     private ShopItemViewModel mShopItemViewModel;
+    private  RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
-        RecyclerView recyclerView = findViewById(R.id.rvTasks);
+        recyclerView = findViewById(R.id.rvTasks);
         final TaskItemListAdapter adapter = new TaskItemListAdapter(this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 new LinearLayoutManager(this).getOrientation());
@@ -45,5 +46,49 @@ public class TaskActivity extends AppCompatActivity {
 
 
     public void showHome(View view) {
+    }
+
+    public void Maths(View view){
+        final TaskItemListAdapter adapter = new TaskItemListAdapter(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mShopItemViewModel.getAllMathItems().observe(this, adapter::setTaskItems);
+
+    }
+
+    public void English(View view){
+        final TaskItemListAdapter adapter = new TaskItemListAdapter(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mShopItemViewModel.getAllEnglishItems().observe(this, adapter::setTaskItems);
+
+    }
+
+    public void Biology(View view){
+        final TaskItemListAdapter adapter = new TaskItemListAdapter(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mShopItemViewModel.getAllBiologyItems().observe(this, adapter::setTaskItems);
+
+    }
+
+    public void Geology(View view){
+        final TaskItemListAdapter adapter = new TaskItemListAdapter(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mShopItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
+
     }
 }

@@ -11,7 +11,7 @@ public class ShopItemViewModel extends AndroidViewModel {
     private TaskItemRepository mTaskRepository;
 
     private LiveData<List<ShopItem>> mAllShopItems;
-    private final LiveData<List<TaskItem>> mAllTaskItems;
+    private LiveData<List<TaskItem>> mAllTaskItems;
 
     public ShopItemViewModel (Application application) {
         super(application);
@@ -23,6 +23,27 @@ public class ShopItemViewModel extends AndroidViewModel {
 
     public LiveData<List<ShopItem>> getAllShopItems() { return mAllShopItems; }
     public LiveData<List<TaskItem>> getAllTaskItems() { return mAllTaskItems; }
+    public LiveData<List<TaskItem>> getAllMathItems()
+    {
+        mAllTaskItems = mTaskRepository.getAllMathItems();
+        return mAllTaskItems;
+    }
+    public LiveData<List<TaskItem>> getAllEnglishItems()
+    {
+        mAllTaskItems = mTaskRepository.getAllEnglishItems();
+        return mAllTaskItems;
+    }
+    public LiveData<List<TaskItem>> getAllBiologyItems()
+    {
+        mAllTaskItems = mTaskRepository.getAllBiologyItems();
+        return mAllTaskItems;
+    }
+    public LiveData<List<TaskItem>> getAllGeologyItems()
+    {
+        mAllTaskItems = mTaskRepository.getAllGeologyItems();
+        return mAllTaskItems;
+    }
+
 
     public void insert(ShopItem shopItem) { mShopRepository.insert(shopItem); }
     public void insert(TaskItem taskItem) { mTaskRepository.insert(taskItem); }

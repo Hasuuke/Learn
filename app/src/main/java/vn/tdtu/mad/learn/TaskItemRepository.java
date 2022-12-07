@@ -13,12 +13,32 @@ public class TaskItemRepository {
     TaskItemRepository(Application application) {
         RoomDatabase db = RoomDatabase.getTaskItemDatabase(application);
         mTaskDao = db.taskDao();
-        mAllTaskItems= mTaskDao.getAllTaskItems();
+        mAllTaskItems= mTaskDao.getAllTaskItems(false);
     }
 
 
 
     public LiveData<List<TaskItem>> getAllTaskItems() {
+        return mAllTaskItems;
+    }
+
+    public LiveData<List<TaskItem>> getAllMathItems() {
+        mAllTaskItems = mTaskDao.getAllMathItems(TaskTypes.MATHS, false);
+        return mAllTaskItems;
+    }
+
+    public LiveData<List<TaskItem>> getAllEnglishItems() {
+        mAllTaskItems = mTaskDao.getAllEnglishItems(TaskTypes.ENGLISH, false);
+        return mAllTaskItems;
+    }
+
+    public LiveData<List<TaskItem>> getAllBiologyItems() {
+        mAllTaskItems = mTaskDao.getAllBiologyItems(TaskTypes.BIOLOGY, false);
+        return mAllTaskItems;
+    }
+
+    public LiveData<List<TaskItem>> getAllGeologyItems() {
+        mAllTaskItems = mTaskDao.getAllGeologyItems(TaskTypes.GEOLOGY, false);
         return mAllTaskItems;
     }
 

@@ -42,6 +42,7 @@
             android:layout_width="72dp"
             android:layout_height="78dp"
             android:layout_weight="1"
+            android:onClick="Maths"
             app:srcCompat="@drawable/maths_img" />
 
         <ImageView
@@ -49,6 +50,7 @@
             android:layout_width="72dp"
             android:layout_height="78dp"
             android:layout_weight="1"
+            android:onClick="English"
             app:srcCompat="@drawable/english_img" />
 
         <ImageView
@@ -56,6 +58,7 @@
             android:layout_width="72dp"
             android:layout_height="78dp"
             android:layout_weight="1"
+            android:onClick="Geology"
             app:srcCompat="@drawable/geology_img" />
 
         <ImageView
@@ -63,6 +66,7 @@
             android:layout_width="72dp"
             android:layout_height="78dp"
             android:layout_weight="1"
+            android:onClick="Biology"
             app:srcCompat="@drawable/biology_img" />
     </LinearLayout>
 

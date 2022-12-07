@@ -30,7 +30,7 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             TaskItem current = mTaskItems.get(position);
             holder.tvName.setText(current.getmName());
             holder.tvDescription.setText(current.getmDescription());
-            holder.tvAmount.setText(String.valueOf(current.getmAmount()));
+            holder.tvAmount.setText(String.valueOf(current.getmAmount()+ " Credits"));
 
             switch(current.getmType()){
                 case MATHS:
