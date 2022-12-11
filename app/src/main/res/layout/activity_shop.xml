@@ -17,6 +17,7 @@
         android:paddingLeft="170dp"
         android:paddingTop="24dp"
         android:text="Shop"
+        android:onClick="onClick_Shop"
         android:textColor="@color/theme"
         android:textSize="24dp" />
 

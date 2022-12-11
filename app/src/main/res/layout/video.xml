@@ -6,28 +6,117 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Screens.VideoActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/tasks_background">
+
+
     <TextView
-        android:id="@+id/mainText"
+        android:id="@+id/tv_tasks_Header1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/inter_extrabold"
-        android:gravity="center"
-        android:text="Learn videos"
-        android:textColor="@color/dashboard"
-        android:textSize="25sp"
-        android:textStyle="bold">
-    </TextView>
+        android:layout_height="79dp"
+        android:text="Videos"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/theme"
+        android:textSize="24dp"
+        android:onClick="onClick_Videos"
+        android:paddingTop="24dp"
+        android:paddingLeft="170dp"/>
 
-    <ImageView
+    <TextView
+        android:id="@+id/tv_videos_Header2"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_gravity="end"
-        android:scaleType="fitXY"
-        android:src="@drawable/bluecolor_screen">
+        android:layout_height="78dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Choose a subject"
+        android:textColor="@color/white"
+        android:textSize="33dp"
+        android:paddingTop="14dp"
+        android:paddingLeft="16.5dp"/>
 
-    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/iv_videos_Maths"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            android:onClick="Maths"
+            app:srcCompat="@drawable/maths_img" />
 
+        <ImageView
+            android:id="@+id/iv_videos_English"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            android:onClick="English"
+            app:srcCompat="@drawable/english_img" />
+
+        <ImageView
+            android:id="@+id/iv_videos_Geology"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            android:onClick="Geology"
+            app:srcCompat="@drawable/geology_img" />
+
+        <ImageView
+            android:id="@+id/iv_videos_Biology"
+            android:layout_width="72dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            android:onClick="Biology"
+            app:srcCompat="@drawable/biology_img" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTasks"
+        android:layout_width="match_parent"
+        android:layout_height="394dp" />
+
+    <LinearLayout
+        android:paddingTop="18dp"
+        android:paddingLeft="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:divider="@drawable/empty_divider">
+
+        <Button
+            android:id="@+id/btn_videos_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/home_button"
+            android:text=""
+            android:theme="@style/Button.White"
+            android:onClick="showHome"/>
+
+        <Button
+            android:id="@+id/btn_videos_videos"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/videos_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_videos_chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/chat_button"
+            android:text=""
+            android:theme="@style/Button.White" />
+
+        <Button
+            android:id="@+id/btn_videos_shop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shop_button"
+            android:text=""
+            android:onClick="showShop"
+            android:theme="@style/Button.White" />
+    </LinearLayout>
 </LinearLayout>

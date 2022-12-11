@@ -18,6 +18,7 @@
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/theme"
         android:textSize="24dp"
+        android:onClick="onClick_Task"
         android:paddingTop="24dp"
         android:paddingLeft="170dp"/>
 
