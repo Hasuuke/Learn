@@ -27,7 +27,7 @@ public class VideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video);
-        recyclerView = findViewById(R.id.rvTasks);
+        recyclerView = findViewById(R.id.rvVideos);
         button_videos_home = findViewById(R.id.btn_videos_home);
         button_videos_videos = findViewById(R.id.btn_videos_videos);
         button_videos_chat = findViewById(R.id.btn_videos_chat);

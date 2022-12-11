@@ -72,7 +72,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTasks"
+        android:id="@+id/rvVideos"
         android:layout_width="match_parent"
         android:layout_height="394dp" />
 
