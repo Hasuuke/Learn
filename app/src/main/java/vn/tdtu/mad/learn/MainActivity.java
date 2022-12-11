@@ -1,59 +1,68 @@
 package vn.tdtu.mad.learn;
 
 import android.content.Intent;
-
-import androidx.annotation.Nullable;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import vn.tdtu.mad.learn.Screens.*;
 
-import vn.tdtu.mad.learn.Screens.CreditsActivity;
-import vn.tdtu.mad.learn.Screens.ShopActivity;
-import vn.tdtu.mad.learn.Screens.TaskActivity;
-import vn.tdtu.mad.learn.Screens.VideoActivity;
 
 public class MainActivity extends AppCompatActivity {
-        TextView textView;
-        ImageView imageView_videos;
-        ImageView imageView_task;
-        ImageView imageView_shop;
-        ImageView imageView_credits;
+    private ImageView iv_Videos, iv_Task, iv_Shop, iv_Credits;
+    private Button btnHome, btnShop, btnVideos, btnChat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Intent intent = new Intent(MainActivity.this, TaskActivity.class);
-//        MainActivity.this.startActivity(intent);
         setContentView(R.layout.activity_main);
-        imageView_videos = (ImageView) findViewById(R.id.btn_videos);
-        imageView_task = (ImageView) findViewById(R.id.btn_task);
-        imageView_shop = (ImageView) findViewById(R.id.btn_shop);
-        imageView_credits = (ImageView) findViewById(R.id.credits_btn);
-        imageView_videos.setOnClickListener(new View.OnClickListener() {
+        iv_Videos = (ImageView) findViewById(R.id.iv_Main_Videos);
+        iv_Task = (ImageView) findViewById(R.id.iv_Main_Task);
+        iv_Shop = (ImageView) findViewById(R.id.iv_Main_Shop);
+        iv_Credits = (ImageView) findViewById(R.id.iv_Main_Credits);
+
+        btnHome = findViewById(R.id.btn_Main_home);
+        btnShop = findViewById(R.id.btn_Main_shop);
+        btnVideos = findViewById(R.id.btn_Main_videos);
+
+        iv_Videos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openVideoActivity();
             }
         });
-        imageView_task.setOnClickListener(new View.OnClickListener() {
+        iv_Task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openTaskActivity();
             }
         });
-        imageView_shop.setOnClickListener(new View.OnClickListener() {
+        iv_Shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openShopActivity();
             }
         });
-        imageView_credits.setOnClickListener(new View.OnClickListener() {
+
+        iv_Credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCreditsActivity();
+            }
+        });
+
+        btnShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openShopActivity();
+            }
+        });
+        btnVideos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openVideoActivity();
             }
         });
     }
@@ -64,17 +73,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openShopActivity() {
-        Intent intent = new Intent(this,ShopActivity.class);
-        startActivity(intent);
-    }
-    private void openTaskActivity() {
-        Intent intent = new Intent(this,TaskActivity.class);
-        startActivity(intent);
-    }
-    private void openVideoActivity() {
-        Intent intent = new Intent(this,VideoActivity.class);
+        Intent intent = new Intent(this, ShopActivity.class);
         startActivity(intent);
     }
 
+    private void openTaskActivity() {
+        Intent intent = new Intent(this, TaskActivity.class);
+        startActivity(intent);
+    }
+
+    private void openVideoActivity() {
+        Intent intent = new Intent(this, VideoActivity.class);
+        startActivity(intent);
+    }
 
 }

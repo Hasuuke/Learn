@@ -19,10 +19,10 @@ import vn.tdtu.mad.learn.TaskItemListAdapter;
 public class VideoActivity extends AppCompatActivity {
     private ShopItemViewModel mShopItemViewModel;
     private RecyclerView recyclerView;
-    Button button_videos_home;
-    Button button_videos_videos;
-    Button button_videos_chat;
-    Button button_videos_shop;
+    private Button button_videos_home;
+    private Button button_videos_videos;
+    private Button button_videos_chat;
+    private Button button_videos_shop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class VideoActivity extends AppCompatActivity {
         button_videos_videos = findViewById(R.id.btn_videos_videos);
         button_videos_chat = findViewById(R.id.btn_videos_chat);
         button_videos_shop = findViewById(R.id.btn_videos_shop);
+
         final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 new LinearLayoutManager(this).getOrientation());
@@ -40,7 +41,6 @@ public class VideoActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mShopItemViewModel = new ViewModelProvider(this).get(ShopItemViewModel.class);
-        // Update the cached copy of the words in the adapter.
         mShopItemViewModel.getAllTaskItems().observe(this, adapter::setTaskItems);
 
         button_videos_home.setOnClickListener(new View.OnClickListener() {
@@ -55,12 +55,7 @@ public class VideoActivity extends AppCompatActivity {
                 openVideoActivity();
             }
         });
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openTaskActivity();
-//            }
-//        });
+
         button_videos_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,11 +68,6 @@ public class VideoActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ShopActivity.class);
         startActivity(intent);
     }
-
-//    private void openTaskActivity() {
-//        Intent intent = new Intent(this,TaskActivity.class);
-//        startActivity(intent);
-//    }
 
     private void openVideoActivity() {
         Intent intent = new Intent(this,VideoActivity.class);
@@ -149,6 +139,5 @@ public class VideoActivity extends AppCompatActivity {
         mShopItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
 
     }
-
 
 }

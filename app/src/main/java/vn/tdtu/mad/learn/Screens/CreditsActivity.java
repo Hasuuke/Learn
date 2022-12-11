@@ -11,10 +11,10 @@ import vn.tdtu.mad.learn.MainActivity;
 import vn.tdtu.mad.learn.R;
 
 public class CreditsActivity extends AppCompatActivity {
-    Button button_credits_home;
-    Button button_credits_videos;
-    Button button_credits_chat;
-    Button button_credits_shop;
+    private Button button_credits_home;
+    private Button button_credits_videos;
+    private Button button_credits_chat;
+    private Button button_credits_shop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,7 @@ public class CreditsActivity extends AppCompatActivity {
                 openVideoActivity();
             }
         });
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openTaskActivity();
-//            }
-//        });
+
         button_credits_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,11 +50,6 @@ public class CreditsActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ShopActivity.class);
         startActivity(intent);
     }
-
-//    private void openTaskActivity() {
-//        Intent intent = new Intent(this,TaskActivity.class);
-//        startActivity(intent);
-//    }
 
     private void openVideoActivity() {
         Intent intent = new Intent(this,VideoActivity.class);

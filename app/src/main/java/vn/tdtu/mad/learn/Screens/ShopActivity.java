@@ -19,10 +19,10 @@ import androidx.lifecycle.*;
 public class ShopActivity extends AppCompatActivity {
     private ShopItemViewModel mShopItemViewModel;
     private TextView tvTotalCredits;
-    Button button_shop_home;
-    Button button_shop_videos;
-    Button button_shop_chat;
-    Button button_shop_shop;
+    private Button button_shop_home;
+    private Button button_shop_videos;
+    private Button button_shop_chat;
+    private Button button_shop_shop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,6 @@ public class ShopActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mShopItemViewModel = new ViewModelProvider(this).get(ShopItemViewModel.class);
-        // Update the cached copy of the words in the adapter.
         mShopItemViewModel.getAllShopItems().observe(this, adapter::setShopItems);
         tvTotalCredits = findViewById(R.id.tvTotalCredits);
 
@@ -56,12 +55,7 @@ public class ShopActivity extends AppCompatActivity {
                 openVideoActivity();
             }
         });
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openTaskActivity();
-//            }
-//        });
+
         button_shop_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,10 +68,7 @@ public class ShopActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    private void openTaskActivity() {
-//        Intent intent = new Intent(this,TaskActivity.class);
-//        startActivity(intent);
-//    }
+
 
     private void openVideoActivity() {
         Intent intent = new Intent(this,VideoActivity.class);
@@ -92,19 +83,4 @@ public class ShopActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ShopActivity.class);
         startActivity(intent);
     }
-
-    public void showCredits(View view) {
-        Intent intent = new Intent(this, CreditsActivity.class);
-        ShopActivity.this.startActivity(intent);
-    }
-
-    public void showTasks(View view){
-        Intent intent = new Intent(this, TaskActivity.class);
-        ShopActivity.this.startActivity(intent);
-    }
-
-    public void showHome(View view) {
-    }
-
-
 }

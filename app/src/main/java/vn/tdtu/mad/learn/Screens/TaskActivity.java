@@ -47,52 +47,19 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mShopItemViewModel = new ViewModelProvider(this).get(ShopItemViewModel.class);
-        // Update the cached copy of the words in the adapter.
         mShopItemViewModel.getAllTaskItems().observe(this, adapter::setTaskItems);
+
 
         button_task_home.setOnClickListener(view -> openActivity(new MainActivity()));
         button_task_video.setOnClickListener(view -> openActivity(new VideoActivity()));
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openTaskActivity();
-//            }
-//        });
         button_task_shop.setOnClickListener(view -> openActivity(new ShopActivity()));
     }
-
-    private void openShopActivity() {
-        Intent intent = new Intent(this,ShopActivity.class);
-        startActivity(intent);
-    }
-
-//    private void openTaskActivity() {
-//        Intent intent = new Intent(this,TaskActivity.class);
-//        startActivity(intent);
-//    }
 
 
 
     private void openActivity(AppCompatActivity activity) {
         Intent intent = new Intent(this,activity.getClass());
         startActivity(intent);
-    }
-    public void onClick_Task(View v) {
-        Intent intent = new Intent(this,TaskActivity.class);
-        startActivity(intent);
-    }
-
-    public void showCredits(View view) {
-        Intent intent = new Intent(this, CreditsActivity.class);
-        TaskActivity.this.startActivity(intent);
-    }
-    public void showShop(View view) {
-        Intent intent = new Intent(this, ShopActivity.class);
-        TaskActivity.this.startActivity(intent);
-    }
-
-
-    public void showHome(View view) {
     }
 
     public void Maths(View view){
@@ -138,13 +105,4 @@ public class TaskActivity extends AppCompatActivity {
         mShopItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100) {
-            TextView credits = findViewById(R.id.credits);
-        }
-    }
-
 }
