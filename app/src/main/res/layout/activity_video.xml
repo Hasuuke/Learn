@@ -18,7 +18,6 @@
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/theme"
         android:textSize="24dp"
-        android:onClick="onClick_Videos"
         android:paddingTop="24dp"
         android:paddingLeft="170dp"/>
 
@@ -91,8 +90,7 @@
             android:layout_height="40dp"
             android:background="@drawable/home_button"
             android:text=""
-            android:theme="@style/Button.White"
-            android:onClick="showHome"/>
+            android:theme="@style/Button.White" />
 
         <Button
             android:id="@+id/btn_videos_videos"

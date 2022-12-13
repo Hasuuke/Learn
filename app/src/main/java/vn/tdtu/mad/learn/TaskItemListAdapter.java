@@ -1,30 +1,22 @@
 package vn.tdtu.mad.learn;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
+import vn.tdtu.mad.learn.database.Items.TaskItem;
 import vn.tdtu.mad.learn.Screens.CaptureImage;
-import vn.tdtu.mad.learn.Screens.CreditsActivity;
-import vn.tdtu.mad.learn.Screens.TaskActivity;
+
 
 
 public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapter.TaskItemViewHolder> {
@@ -46,7 +38,6 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         return new TaskItemListAdapter.TaskItemViewHolder(itemView);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(TaskItemListAdapter.TaskItemViewHolder holder, int position) {
         if (mTaskItems != null) {
@@ -119,7 +110,5 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             ivTaskType = itemView.findViewById(R.id.ivTaskType);
             btnSolved = itemView.findViewById(R.id.btnSolved);
         }
-
-
     }
 }

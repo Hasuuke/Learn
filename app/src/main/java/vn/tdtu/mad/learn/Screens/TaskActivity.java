@@ -1,26 +1,21 @@
 package vn.tdtu.mad.learn.Screens;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import vn.tdtu.mad.learn.MainActivity;
 import vn.tdtu.mad.learn.R;
-import vn.tdtu.mad.learn.ShopItemViewModel;
-import vn.tdtu.mad.learn.TaskItem;
+import vn.tdtu.mad.learn.database.ItemViewModel;
 import vn.tdtu.mad.learn.TaskItemListAdapter;
 
 public class TaskActivity extends AppCompatActivity {
-    private ShopItemViewModel mShopItemViewModel;
+    private ItemViewModel mItemViewModel;
     private  RecyclerView recyclerView;
     Button button_task_home;
     Button button_task_video;
@@ -46,8 +41,8 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mShopItemViewModel = new ViewModelProvider(this).get(ShopItemViewModel.class);
-        mShopItemViewModel.getAllTaskItems().observe(this, adapter::setTaskItems);
+        mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        mItemViewModel.getAllTaskItems().observe(this, adapter::setTaskItems);
 
 
         button_task_home.setOnClickListener(view -> openActivity(new MainActivity()));
@@ -69,7 +64,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mShopItemViewModel.getAllMathItems().observe(this, adapter::setTaskItems);
+        mItemViewModel.getAllMathItems().observe(this, adapter::setTaskItems);
 
     }
 
@@ -80,7 +75,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mShopItemViewModel.getAllEnglishItems().observe(this, adapter::setTaskItems);
+        mItemViewModel.getAllEnglishItems().observe(this, adapter::setTaskItems);
 
     }
 
@@ -91,7 +86,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mShopItemViewModel.getAllBiologyItems().observe(this, adapter::setTaskItems);
+        mItemViewModel.getAllBiologyItems().observe(this, adapter::setTaskItems);
 
     }
 
@@ -102,7 +97,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mShopItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
+        mItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
 
     }
 }

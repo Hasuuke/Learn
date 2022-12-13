@@ -1,20 +1,20 @@
-package vn.tdtu.mad.learn;
+package vn.tdtu.mad.learn.database;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import vn.tdtu.mad.learn.database.Items.*;
 
-import static vn.tdtu.mad.learn.TaskTypes.*;
+import static vn.tdtu.mad.learn.database.Items.TaskTypes.*;
 
-@Database(entities = {ShopItem.class, TaskItem.class}, version = 5, exportSchema = false)
+@Database(entities = {ShopItem.class, TaskItem.class}, version = 6, exportSchema = false)
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
-    public abstract ShopDao shopDao();
 
     private static volatile RoomDatabase INSTANCE;
+    public abstract Dao taskDao();
 
-    public abstract TaskDao taskDao();
 
 
     static RoomDatabase getShopDatabase(final Context context) {
@@ -61,12 +61,10 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-        private final ShopDao mShopDao;
-        private final TaskDao mTaskDao;
+        private final Dao mDao;
 
         PopulateDbAsync(RoomDatabase db) {
-            mShopDao = db.shopDao();
-            mTaskDao = db.taskDao();
+            mDao = db.taskDao();
         }
 
         @Override
@@ -74,16 +72,26 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
             // Start the app with a clean database every time.
             // Not needed if you only populate the database
             // when it is first created
-            mShopDao.deleteAll();
-            mShopDao.insert(new ShopItem("Mc Donalds", 22.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, true));
-            mShopDao.insert(new ShopItem("Burger King", 28.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
-            mShopDao.insert(new ShopItem("Fortnite", 290.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, true));
+            mDao.deleteAllShop();
+            mDao.insert(new ShopItem("Mc Donalds", 22.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
+            mDao.insert(new ShopItem("Burger King", 28.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
+            mDao.insert(new ShopItem("Fortnite", 290.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
 
-            mTaskDao.deleteAll();
-            mTaskDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 22.00, false));
-            mTaskDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 25.00, false));
-            mTaskDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 40.00, false));
-            mTaskDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, false));
+            mDao.insert(new ShopItem("Mc Donalds", 5.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, true));
+            mDao.insert(new ShopItem("Burger King", 5.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.BURGER_KING, true));
+            mDao.insert(new ShopItem("Fortnite", 100.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, true));
+
+
+            mDao.deleteAll();
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 22.00, false));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 25.00, false));
+            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 40.00, false));
+            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, false));
+
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 20.00, true));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 25.00, true));
+            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 50.00, true));
+            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, true));
 
             return null;
         }

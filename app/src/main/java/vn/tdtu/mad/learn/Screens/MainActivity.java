@@ -1,4 +1,4 @@
-package vn.tdtu.mad.learn;
+package vn.tdtu.mad.learn.Screens;
 
 import android.content.Intent;
 import android.widget.Button;
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import vn.tdtu.mad.learn.R;
 import vn.tdtu.mad.learn.Screens.*;
 
 

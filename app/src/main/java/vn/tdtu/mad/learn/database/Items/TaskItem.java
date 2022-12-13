@@ -1,4 +1,4 @@
-package vn.tdtu.mad.learn;
+package vn.tdtu.mad.learn.database.Items;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
