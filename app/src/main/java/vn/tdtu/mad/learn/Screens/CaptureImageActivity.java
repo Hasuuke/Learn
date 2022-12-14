@@ -1,19 +1,15 @@
 package vn.tdtu.mad.learn.Screens;
 
 import android.content.ContentValues;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -23,7 +19,7 @@ import android.widget.ImageView;
 import org.jetbrains.annotations.NotNull;
 import vn.tdtu.mad.learn.R;
 
-public class CaptureImage extends AppCompatActivity {
+public class CaptureImageActivity extends AppCompatActivity {
     private static final int PERMISSION_CODE = 2222;
     private static final int CAPTURE_CODE = 4444;
     ImageView imageView;

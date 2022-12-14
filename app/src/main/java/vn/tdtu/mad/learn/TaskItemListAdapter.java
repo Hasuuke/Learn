@@ -3,11 +3,9 @@ package vn.tdtu.mad.learn;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,13 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import vn.tdtu.mad.learn.database.Items.TaskItem;
-import vn.tdtu.mad.learn.Screens.CaptureImage;
 
 
 
 public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapter.TaskItemViewHolder> {
     private final LayoutInflater mInflater;
-    private List<TaskItem> mTaskItems; // Cached copy of words
+    private List<TaskItem> mTaskItems;
     private  Context context ;
     private final RecyclerViewInterface recyclerViewInterface;
     AppCompatActivity taskActivity ;
@@ -50,13 +47,6 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             holder.tvName.setText(current.getmName());
             holder.tvDescription.setText(current.getmDescription());
             holder.tvAmount.setText(current.getmAmount()+ " Credits");
-        /*    holder.btnSolved.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, CaptureImage.class);
-                    context.startActivity(intent);
-                }
-            });*/
 
             switch(current.getmType()){
                 case MATHS:
@@ -82,9 +72,6 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         }
     }
 
-    public interface RecyclerviewClickListener{
-        void onClick(View v, int position);
-    }
 
     public TaskItem getTaskItem(int position){
         return mTaskItems.get(position);
@@ -132,8 +119,5 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             });
         }
     }
-
-
-
 
 }

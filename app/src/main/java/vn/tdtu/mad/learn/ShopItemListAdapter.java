@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,14 +15,18 @@ import java.util.List;
 public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapter.ShopItemViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<ShopItem> mShopItems; // Cached copy of words
+    private List<ShopItem> mShopItems;
+    private final RecyclerViewInterface recyclerViewInterface;
 
-    public ShopItemListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    public ShopItemListAdapter(Context context, RecyclerViewInterface recyclerViewInterface) {
+        mInflater = LayoutInflater.from(context);
+        this.recyclerViewInterface =recyclerViewInterface;
+    }
 
     @Override
     public ShopItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recyclerview_shop_item, parent, false);
-        return new ShopItemViewHolder(itemView);
+        return new ShopItemViewHolder(itemView, recyclerViewInterface);
     }
 
     @Override
@@ -48,7 +53,6 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
             }
 
         } else {
-            // Covers the case of data not being ready yet.
             holder.tvName.setText("No Data");
             holder.tvAmount.setText("No Data");
             holder.tvMising.setText("No Data");
@@ -61,8 +65,7 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
+
     @Override
     public int getItemCount() {
         if (mShopItems != null)
@@ -76,14 +79,28 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         private final TextView tvAmount;
         private final TextView tvMising;
         private final ImageView ivShopType;
+        private final Button btnRedemeed;
 
-        private ShopItemViewHolder(View itemView) {
+        private ShopItemViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             tvOffer = itemView.findViewById(R.id.tvOffer);
             tvMising = itemView.findViewById(R.id.tvMissing);
             ivShopType = itemView.findViewById(R.id.ivShopType);
+            btnRedemeed = itemView.findViewById(R.id.btnRedeemed);
+
+            btnRedemeed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewInterface !=null){
+                        int pos = getAdapterPosition();
+                        if(pos !=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

@@ -4,7 +4,7 @@
     package="vn.tdtu.mad.learn">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -17,7 +17,14 @@
         android:theme="@style/Theme.Learn"
         tools:targetApi="31">
         <activity
-            android:name=".Screens.CaptureImage"
+            android:name=".Screens.YouTubeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Screens.CaptureImageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
