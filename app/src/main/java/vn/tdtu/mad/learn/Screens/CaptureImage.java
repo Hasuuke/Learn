@@ -1,5 +1,11 @@
 package vn.tdtu.mad.learn.Screens;
 
+import android.content.ContentValues;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -14,50 +20,83 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.jetbrains.annotations.NotNull;
 import vn.tdtu.mad.learn.R;
 
 public class CaptureImage extends AppCompatActivity {
+    private static final int PERMISSION_CODE = 2222;
+    private static final int CAPTURE_CODE = 4444;
     ImageView imageView;
-    Button button;
+    Button button, button2;
+    Uri imageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_image);
-        final Object object = getIntent().getSerializableExtra("detail");
         imageView = findViewById(R.id.imageView);
         button = findViewById(R.id.button);
-        if(ContextCompat.checkSelfPermission(CaptureImage.this, Manifest.permission.CAMERA)
-        != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(CaptureImage.this,new String[]{Manifest.permission.CAMERA},10);
-        }
+        button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(imageUri ==null){
+
+                }
+                else{
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,100);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(checkSelfPermission(Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED||checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                        requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
+                    }else{
+                        openCamera();
+                    }
+                }else{
+                    openCamera();
+                }
             }
         });
+    }
+
+    private void openCamera() {
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE,"new Submission");
+
+
+        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent camIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        camIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(camIntent,CAPTURE_CODE);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode){
+            case PERMISSION_CODE:
+                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    openCamera();
+                }else {
+                    Toast.makeText(this,"Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 100){
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(bitmap);
-            button.setText("Submit");
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    openTaskActivity();
-                }
-            });
+        if(resultCode == RESULT_OK){
+            imageView.setImageURI(imageUri);
         }
-    }
-
-    private void openTaskActivity() {
-        setResult(100);
-
-        finish();
     }
 }

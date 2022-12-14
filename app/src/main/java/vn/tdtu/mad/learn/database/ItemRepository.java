@@ -27,6 +27,23 @@ public class ItemRepository {
         mAllShopItems= mDao.getAllShopItems(false);
     }
 
+    public void insert (TaskItem taskItem) {
+        new ItemRepository.insertAsyncTask(mDao).execute(taskItem);
+    }
+
+    public void insert (ShopItem shopItem) {
+        new ItemRepository.insertAsyncTask2(mDao).execute(shopItem);
+    }
+
+    public void update (TaskItem taskItem) {
+        new ItemRepository.updateAsyncTask(mDao).execute(taskItem);
+    }
+
+    public void update (ShopItem shopItem) {
+        new ItemRepository.updateAsyncTask2(mDao).execute(shopItem);
+    }
+
+
 
 
     public LiveData<List<TaskItem>> getAllTaskItems() {
@@ -70,9 +87,12 @@ public class ItemRepository {
         return mAllCreditItems;
     }
 
-    public void insert (TaskItem taskItem) {
-        new ItemRepository.insertAsyncTask(mDao).execute(taskItem);
+    LiveData<List<ShopItem>> getAllShopItems() {
+        return mAllShopItems;
     }
+
+
+
 
 
     private static class insertAsyncTask extends AsyncTask<TaskItem, Void, Void> {
@@ -91,15 +111,38 @@ public class ItemRepository {
     }
 
 
+    private static class updateAsyncTask extends AsyncTask<TaskItem, Void, Void> {
 
+        private Dao mAsyncDao;
 
-    LiveData<List<ShopItem>> getAllShopItems() {
-        return mAllShopItems;
+        updateAsyncTask(Dao dao) {
+            mAsyncDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final TaskItem... params) {
+            mAsyncDao.update(params[0]);
+            return null;
+        }
     }
 
-    public void insert (ShopItem shopItem) {
-        new ItemRepository.insertAsyncTask2(mDao).execute(shopItem);
+
+    private static class updateAsyncTask2 extends AsyncTask<ShopItem, Void, Void> {
+
+        private Dao mAsyncDao;
+
+        updateAsyncTask2(Dao dao) {
+            mAsyncDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final ShopItem... params) {
+            mAsyncDao.update(params[0]);
+            return null;
+        }
     }
+
+
 
     private static class insertAsyncTask2 extends AsyncTask<ShopItem, Void, Void> {
 

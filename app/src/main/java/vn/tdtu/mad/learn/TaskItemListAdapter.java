@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,10 +24,14 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
     private final LayoutInflater mInflater;
     private List<TaskItem> mTaskItems; // Cached copy of words
     private  Context context ;
+    private final RecyclerViewInterface recyclerViewInterface;
     AppCompatActivity taskActivity ;
-    public TaskItemListAdapter(Context context,Activity ac) {
+
+
+    public TaskItemListAdapter(Context context,Activity ac, RecyclerViewInterface recyclerViewInterface) {
         mInflater = LayoutInflater.from(context);
         this.context = context;
+        this.recyclerViewInterface = recyclerViewInterface;
         taskActivity = (AppCompatActivity) ac;
     }
 
@@ -35,7 +40,7 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
     public TaskItemListAdapter.TaskItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.recyclerview_task_item, parent, false);
-        return new TaskItemListAdapter.TaskItemViewHolder(itemView);
+        return new TaskItemListAdapter.TaskItemViewHolder(itemView, recyclerViewInterface);
     }
 
     @Override
@@ -45,13 +50,13 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             holder.tvName.setText(current.getmName());
             holder.tvDescription.setText(current.getmDescription());
             holder.tvAmount.setText(current.getmAmount()+ " Credits");
-            holder.btnSolved.setOnClickListener(new View.OnClickListener() {
+        /*    holder.btnSolved.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, CaptureImage.class);
                     context.startActivity(intent);
                 }
-            });
+            });*/
 
             switch(current.getmType()){
                 case MATHS:
@@ -81,6 +86,10 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         void onClick(View v, int position);
     }
 
+    public TaskItem getTaskItem(int position){
+        return mTaskItems.get(position);
+    }
+
 
     public void setTaskItems(List<TaskItem> taskItems){
         mTaskItems = taskItems;
@@ -102,13 +111,29 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         private final TextView tvAmount;
         private final ImageView ivTaskType;
         private final Button btnSolved;
-        private TaskItemViewHolder(View itemView) {
+        private TaskItemViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             ivTaskType = itemView.findViewById(R.id.ivTaskType);
             btnSolved = itemView.findViewById(R.id.btnSolved);
+
+            btnSolved.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewInterface !=null){
+                        int pos = getAdapterPosition();
+                        if(pos !=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
+
+
+
+
 }

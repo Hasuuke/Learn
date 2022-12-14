@@ -73,4 +73,9 @@ public class ItemViewModel extends AndroidViewModel {
     public void insert(ShopItem shopItem) { mItemRepository.insert(shopItem); }
     public void insert(TaskItem taskItem) { mItemRepository.insert(taskItem); }
 
+    public void update(TaskItem taskItem) { mItemRepository.update(taskItem); }
+    public void update(ShopItem shopItem) { mItemRepository.update(shopItem); }
+
+
+
 }

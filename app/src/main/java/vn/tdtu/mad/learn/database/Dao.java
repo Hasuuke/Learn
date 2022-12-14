@@ -4,12 +4,16 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 import vn.tdtu.mad.learn.database.Items.*;
 
 import java.util.List;
 @androidx.room.Dao
 public interface Dao {
     //TASK
+    @Update
+    void update(TaskItem taskItem);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(TaskItem taskItem);
 
@@ -34,6 +38,8 @@ public interface Dao {
 
     @Insert
     void insert(ShopItem word);
+    @Update
+    void update(ShopItem shopItem);
 
     @Query("DELETE FROM shop_items")
     void deleteAllShop();

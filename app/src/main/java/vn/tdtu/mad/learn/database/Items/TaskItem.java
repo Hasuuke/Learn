@@ -79,4 +79,16 @@ public class TaskItem {
     public void setmSolved(boolean mSolved) {
         this.mSolved = mSolved;
     }
+
+    @Override
+    public String toString() {
+        return "TaskItem{" +
+                "mID=" + mID +
+                ", mName='" + mName + '\'' +
+                ", mDescription='" + mDescription + '\'' +
+                ", mAmount=" + mAmount +
+                ", mType=" + mType +
+                ", mSolved=" + mSolved +
+                '}';
+    }
 }

@@ -29,16 +29,6 @@ public class VideoActivity extends AppCompatActivity {
 
         button_videos_shop = findViewById(R.id.btn_videos_shop);
 
-        final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
-        mItemViewModel.getAllTaskItems().observe(this, adapter::setTaskItems);
-
         button_videos_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,51 +59,6 @@ public class VideoActivity extends AppCompatActivity {
     public void showShop(View view) {
         Intent intent = new Intent(this, ShopActivity.class);
         VideoActivity.this.startActivity(intent);
-    }
-
-
-    public void Maths(View view){
-        final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mItemViewModel.getAllMathItems().observe(this, adapter::setTaskItems);
-
-    }
-
-    public void English(View view){
-        final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mItemViewModel.getAllEnglishItems().observe(this, adapter::setTaskItems);
-
-    }
-
-    public void Biology(View view){
-        final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mItemViewModel.getAllBiologyItems().observe(this, adapter::setTaskItems);
-
-    }
-
-    public void Geology(View view){
-        final TaskItemListAdapter adapter = new TaskItemListAdapter(this,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mItemViewModel.getAllGeologyItems().observe(this, adapter::setTaskItems);
-
     }
 
 }
