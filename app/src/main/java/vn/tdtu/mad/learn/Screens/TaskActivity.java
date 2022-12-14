@@ -1,13 +1,11 @@
 package vn.tdtu.mad.learn.Screens;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,7 +17,6 @@ import vn.tdtu.mad.learn.database.ItemViewModel;
 import vn.tdtu.mad.learn.TaskItemListAdapter;
 import vn.tdtu.mad.learn.database.Items.TaskItem;
 
-import static android.content.ContentValues.TAG;
 
 public class TaskActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ItemViewModel mItemViewModel;
@@ -111,7 +108,7 @@ public class TaskActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
         index = position;
         Log.e("ITEM","Position Interface: "+position);
-        Intent intent = new Intent(this, CaptureImage.class);
+        Intent intent = new Intent(this, CaptureImageActivity.class);
         startActivityForResult(intent, 2);
     }
 }

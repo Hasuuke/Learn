@@ -41,7 +41,7 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Screens.CaptureImage"
+            android:name=".Screens.CaptureImageActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -49,6 +49,13 @@
         </activity>
         <activity
             android:name=".Screens.CreditsActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Screens.YouTubeActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

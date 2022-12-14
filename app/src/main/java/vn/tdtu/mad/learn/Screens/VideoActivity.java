@@ -1,7 +1,8 @@
 package vn.tdtu.mad.learn.Screens;
 
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,23 +12,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import vn.tdtu.mad.learn.R;
+import vn.tdtu.mad.learn.*;
 import vn.tdtu.mad.learn.database.ItemViewModel;
-import vn.tdtu.mad.learn.TaskItemListAdapter;
+import vn.tdtu.mad.learn.database.Items.VideoItem;
 
-public class VideoActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class VideoActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ItemViewModel mItemViewModel;
+    private VideoItemListAdapter adapter;
     private RecyclerView recyclerView;
     private Button button_videos_home;
     private Button button_videos_shop;
+    private VideoItem currentVideo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         recyclerView = findViewById(R.id.rvVideos);
         button_videos_home = findViewById(R.id.btn_videos_home);
-
         button_videos_shop = findViewById(R.id.btn_videos_shop);
+
+        adapter = new VideoItemListAdapter(this, this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<VideoItem> videoItems = new ArrayList<>();
+        videoItems.add(new VideoItem("Protein Synthesis", "oefAI2x2CQM", "Amoeba Sisters", "Biology", 8.46f, 4.0f));
+        adapter.setVideoItems(videoItems);
+
 
         button_videos_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +64,7 @@ public class VideoActivity extends AppCompatActivity {
     }
 
     private void openShopActivity() {
-        Intent intent = new Intent(this,ShopActivity.class);
+        Intent intent = new Intent(this, ShopActivity.class);
         startActivity(intent);
     }
 
@@ -59,6 +77,15 @@ public class VideoActivity extends AppCompatActivity {
     public void showShop(View view) {
         Intent intent = new Intent(this, ShopActivity.class);
         VideoActivity.this.startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Log.e("VIDEOS", String.valueOf(position));
+        currentVideo = adapter.getVideoItem(position);
+        Intent youtubeIntent = new Intent(this, YouTubeActivity.class);
+        youtubeIntent.putExtra("ID", currentVideo.getVideoID());
+        startActivity(youtubeIntent);
     }
 
 }

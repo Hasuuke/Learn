@@ -75,8 +75,6 @@ public class CreditsActivity extends AppCompatActivity {
         });
 
 
-
-
         button_credits_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

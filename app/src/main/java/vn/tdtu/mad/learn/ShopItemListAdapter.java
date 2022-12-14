@@ -1,6 +1,5 @@
 package vn.tdtu.mad.learn;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,28 +18,30 @@ import java.util.List;
 public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapter.ShopItemViewHolder> {
     Context context;
     private final LayoutInflater mInflater;
-    private List<ShopItem> mShopItems; // Cached copy of words
+    private List<ShopItem> mShopItems;
+    private final RecyclerViewInterface recyclerViewInterface;
 
-    public ShopItemListAdapter(Context context) {
+    public ShopItemListAdapter(Context context, RecyclerViewInterface recyclerViewInterface) {
+        mInflater = LayoutInflater.from(context);
+        this.recyclerViewInterface =recyclerViewInterface;
         this.context = context;
-        mInflater = LayoutInflater.from(context); }
+    }
 
     @Override
     public ShopItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recyclerview_shop_item, parent, false);
-        return new ShopItemViewHolder(itemView);
+        return new ShopItemViewHolder(itemView, recyclerViewInterface);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ShopItemViewHolder holder, int position) {
         if (mShopItems != null) {
             ShopItem current = mShopItems.get(position);
             holder.tvName.setText(current.getmName());
-            holder.tvAmount.setText(current.getmAmount() + " Credits");
+            holder.tvAmount.setText(String.valueOf(current.getmAmount())+ " Credits");
             holder.tvMising.setText("20 Credits missing");
             holder.tvOffer.setText(current.getmOffer());
-            holder.btnRedeemed.setOnClickListener(new View.OnClickListener() {
+            holder.btnRedemeed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, MapsActivity.class);
@@ -62,7 +63,6 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
             }
 
         } else {
-            // Covers the case of data not being ready yet.
             holder.tvName.setText("No Data");
             holder.tvAmount.setText("No Data");
             holder.tvMising.setText("No Data");
@@ -75,8 +75,7 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
+
     @Override
     public int getItemCount() {
         if (mShopItems != null)
@@ -90,15 +89,28 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         private final TextView tvAmount;
         private final TextView tvMising;
         private final ImageView ivShopType;
-        private final Button btnRedeemed;
-        private ShopItemViewHolder(View itemView) {
+        private final Button btnRedemeed;
+
+        private ShopItemViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             tvOffer = itemView.findViewById(R.id.tvOffer);
             tvMising = itemView.findViewById(R.id.tvMissing);
             ivShopType = itemView.findViewById(R.id.ivShopType);
-            btnRedeemed = itemView.findViewById(R.id.btnRedeemed);
+            btnRedemeed = itemView.findViewById(R.id.btnRedeemed);
+
+            btnRedemeed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewInterface !=null){
+                        int pos = getAdapterPosition();
+                        if(pos !=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

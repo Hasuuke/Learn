@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import vn.tdtu.mad.learn.R;
+import vn.tdtu.mad.learn.RecyclerViewInterface;
 import vn.tdtu.mad.learn.ShopItemListAdapter;
 import vn.tdtu.mad.learn.database.ItemViewModel;
 import androidx.lifecycle.*;
@@ -21,25 +22,27 @@ import vn.tdtu.mad.learn.database.Items.TaskItem;
 
 import java.util.List;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ItemViewModel mItemViewModel;
     private TextView tvTotalCredits;
     private Button button_shop_home;
     private Button button_shop_videos;
+    private RecyclerView recyclerView;
 
     private List<TaskItem> taskItemList;
     private List<ShopItem> shopItemList;
+    private ShopItemListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        RecyclerView recyclerView = findViewById(R.id.rvShop);
+        recyclerView = findViewById(R.id.rvShop);
         button_shop_home = findViewById(R.id.btn_shop_home);
         button_shop_videos = findViewById(R.id.btn_shop_videos);
         tvTotalCredits = findViewById(R.id.tvTotalCredits);
 
-        final ShopItemListAdapter adapter = new ShopItemListAdapter(this);
+        adapter = new ShopItemListAdapter(this, this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 new LinearLayoutManager(this).getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -121,4 +124,8 @@ public class ShopActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Log.e("SHOP", String.valueOf(position));
+    }
 }

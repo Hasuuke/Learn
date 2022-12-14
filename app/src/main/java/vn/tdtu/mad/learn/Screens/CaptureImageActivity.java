@@ -17,7 +17,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -27,7 +26,7 @@ import android.widget.ImageView;
 import org.jetbrains.annotations.NotNull;
 import vn.tdtu.mad.learn.R;
 
-public class CaptureImage extends AppCompatActivity {
+public class CaptureImageActivity extends AppCompatActivity {
     private static final int PERMISSION_CODE = 2222;
     private static final int CAPTURE_CODE = 4444;
     ImageView imageView;
@@ -56,13 +55,13 @@ public class CaptureImage extends AppCompatActivity {
                 else{
                     setResult(RESULT_OK);
                     finish();
-                    Toast.makeText(CaptureImage.this, "Task submitted", Toast.LENGTH_SHORT).show();
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(CaptureImage.this,"Notification");
+                    Toast.makeText(CaptureImageActivity.this, "Task submitted", Toast.LENGTH_SHORT).show();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(CaptureImageActivity.this,"Notification");
                     builder.setContentTitle("Task submitted");
                     builder.setContentText("You have submitted the task");
                     builder.setSmallIcon(R.drawable.notification);
                     builder.setAutoCancel(true);
-                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(CaptureImage.this);
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(CaptureImageActivity.this);
                     managerCompat.notify(1,builder.build());
                 }
             }
