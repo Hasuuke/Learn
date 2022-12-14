@@ -1,12 +1,19 @@
 package vn.tdtu.mad.learn.Screens;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentValues;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,6 +40,12 @@ public class CaptureImageActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Notification","Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +55,14 @@ public class CaptureImageActivity extends AppCompatActivity {
                 else{
                     setResult(RESULT_OK);
                     finish();
+                    Toast.makeText(CaptureImageActivity.this, "Task submitted", Toast.LENGTH_SHORT).show();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(CaptureImageActivity.this,"Notification");
+                    builder.setContentTitle("Task submitted");
+                    builder.setContentText("You have submitted the task");
+                    builder.setSmallIcon(R.drawable.notification);
+                    builder.setAutoCancel(true);
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(CaptureImageActivity.this);
+                    managerCompat.notify(1,builder.build());
                 }
             }
         });
