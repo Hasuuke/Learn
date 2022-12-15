@@ -1,5 +1,6 @@
 package vn.tdtu.mad.learn.Screens;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
     private void openCreditsActivity() {
         Intent intent = new Intent(this, CreditsActivity.class);
         startActivity(intent);
+
     }
 
     private void openShopActivity() {

@@ -9,7 +9,7 @@ import vn.tdtu.mad.learn.database.Items.*;
 
 import static vn.tdtu.mad.learn.database.Items.TaskTypes.*;
 
-@Database(entities = {ShopItem.class, TaskItem.class}, version = 6, exportSchema = false)
+@Database(entities = {ShopItem.class, TaskItem.class}, version = 7, exportSchema = false)
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
     private static volatile RoomDatabase INSTANCE;
@@ -70,6 +70,14 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
             mDao.deleteAllShop();
+            mDao.deleteAll();
+
+            mDao.insert(new ShopItem("Mc Donalds", 15, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
+            mDao.insert(new ShopItem("Burger King", 35, "Discount 15% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
+            mDao.insert(new ShopItem("Fortnite", 50, "Discount 20% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
+            mDao.insert(new ShopItem("Mc Donalds", 15, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
+            mDao.insert(new ShopItem("Burger King", 35, "Discount 15% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
+            mDao.insert(new ShopItem("Fortnite", 50, "Discount 20% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
             mDao.insert(new ShopItem("Mc Donalds", 15, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
             mDao.insert(new ShopItem("Burger King", 35, "Discount 15% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
             mDao.insert(new ShopItem("Fortnite", 50, "Discount 20% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
@@ -78,24 +86,30 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
             mDao.insert(new ShopItem("Fortnite", 50, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, true));
 
 
-            mDao.deleteAll();
+
+
             mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
             mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
             mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
             mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
             mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+
             mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
             mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
             mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
             mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+
             mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
             mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
             mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+
 
             mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 5.00, true));
             mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 20.00, true));
             mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 50.00, true));
             mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, true));
+
 
             return null;
         }

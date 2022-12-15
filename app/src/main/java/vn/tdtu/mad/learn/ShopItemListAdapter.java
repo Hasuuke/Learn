@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import vn.tdtu.mad.learn.Screens.ShopActivity;
@@ -77,6 +79,9 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
             holder.tvMising.setText("No Data");
             holder.tvOffer.setText("No Data");
         }
+
+        holder.layout.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.anim_rv));
+
     }
 
     public void setShopItems(List<ShopItem> shopItems){
@@ -103,6 +108,7 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
         private final TextView tvMising;
         private final ImageView ivShopType;
         private final Button btnRedemeed;
+        private final LinearLayout layout;
 
         private ShopItemViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
@@ -112,6 +118,8 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
             tvMising = itemView.findViewById(R.id.tvMissing);
             ivShopType = itemView.findViewById(R.id.ivShopType);
             btnRedemeed = itemView.findViewById(R.id.btnRedeemed);
+            layout = itemView.findViewById(R.id.shopLayout);
+
 
             btnRedemeed.setOnClickListener(new View.OnClickListener() {
                 @Override

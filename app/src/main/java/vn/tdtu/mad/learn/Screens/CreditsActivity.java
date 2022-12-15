@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import vn.tdtu.mad.learn.CreditItemListAdapter;
 import vn.tdtu.mad.learn.R;
 import vn.tdtu.mad.learn.database.ItemViewModel;
+import vn.tdtu.mad.learn.database.Items.CreditItem;
 import vn.tdtu.mad.learn.database.Items.ShopItem;
 import vn.tdtu.mad.learn.database.Items.TaskItem;
 
@@ -56,7 +57,13 @@ public class CreditsActivity extends AppCompatActivity {
         rvCredits.setLayoutManager(new LinearLayoutManager(this));
 
         mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
-        mItemViewModel.getAllCreditItems().observe(this, adapter::setCreditItems);
+        mItemViewModel.getAllCreditItems().observe(this, new Observer<List<CreditItem>>() {
+            @Override
+            public void onChanged(List<CreditItem> creditItems) {
+                Log.e("@@@@","Credit Items: "+ creditItems.toString());
+                adapter.setCreditItems(creditItems);
+            }
+        });
 
         mItemViewModel.getSolvedTaskItems().observe(this, new Observer<List<TaskItem>>() {
             @Override

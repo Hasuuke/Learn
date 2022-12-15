@@ -34,4 +34,13 @@ public class CreditItem {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "CreditItem{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
