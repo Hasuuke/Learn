@@ -158,8 +158,6 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-                startActivity(intent);
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"Notification");
                 builder.setContentTitle("Sale Off!");
                 builder.setContentText("Special Offers Are there in the shop");
