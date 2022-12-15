@@ -47,7 +47,7 @@ public interface Dao {
     @Query("SELECT * from shop_items WHERE Redeemed == :isReedemed")
     LiveData<List<ShopItem>> getAllShopItems(Boolean isReedemed);
 
-    @Query("SELECT Name AS name, Amount AS amount, ShopType AS type FROM shop_items WHERE Redeemed == :isRedeemed UNION SELECT Name As name, Amount as amount, Type as type FROM task_items WHERE Solved == :isSolved")
+    @Query("SELECT Name AS name, Amount AS amount, ShopType AS type FROM shop_items WHERE Redeemed == :isRedeemed UNION ALL SELECT Name As name, Amount as amount, Type as type FROM task_items WHERE Solved == :isSolved")
             LiveData<List<CreditItem>> getAllCreditItems(Boolean isSolved, Boolean isRedeemed);
 
     @Query("SELECT * from shop_items WHERE Redeemed == :isReedemed")

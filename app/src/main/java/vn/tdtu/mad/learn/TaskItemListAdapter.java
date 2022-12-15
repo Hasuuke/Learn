@@ -6,8 +6,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,6 +72,8 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             holder.tvAmount.setText("No Data");
             holder.tvDescription.setText("No Data");
         }
+        holder.layout.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.anim_rv));
+
     }
 
 
@@ -97,6 +101,8 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         private final TextView tvAmount;
         private final ImageView ivTaskType;
         private final Button btnSolved;
+        private final LinearLayout layout;
+
         private TaskItemViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
@@ -104,6 +110,8 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
             tvAmount = itemView.findViewById(R.id.tvAmount);
             ivTaskType = itemView.findViewById(R.id.ivTaskType);
             btnSolved = itemView.findViewById(R.id.btnSolved);
+            layout = itemView.findViewById(R.id.taskLayout);
+
 
             btnSolved.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,6 +65,8 @@ public class VideoItemListAdapter extends RecyclerView.Adapter<VideoItemListAdap
             holder.tvName.setText("No Data");
 
         }
+        holder.layout.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.anim_rv));
+
     }
 
     public void setVideoItems(List<VideoItem> videoItems){
@@ -90,6 +94,8 @@ public class VideoItemListAdapter extends RecyclerView.Adapter<VideoItemListAdap
         private final TextView tvAuthor;
         private final RatingBar rbRating;
         private final ImageView ivVideoType;
+        private final LinearLayout layout;
+
 
 
 
@@ -100,6 +106,7 @@ public class VideoItemListAdapter extends RecyclerView.Adapter<VideoItemListAdap
             rbRating = itemView.findViewById(R.id.rbRating);
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             ivVideoType = itemView.findViewById(R.id.ivVideoType);
+            layout = itemView.findViewById(R.id.videoLayout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

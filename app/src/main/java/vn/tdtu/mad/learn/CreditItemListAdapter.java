@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import vn.tdtu.mad.learn.database.Items.CreditItem;
@@ -80,6 +82,7 @@ public class CreditItemListAdapter extends RecyclerView.Adapter<CreditItemListAd
             holder.tvAmount.setText("No Data");
 
         }
+        holder.layout.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.anim_rv));
     }
 
     public void setCreditItems(List<CreditItem> shopItems){
@@ -99,12 +102,14 @@ public class CreditItemListAdapter extends RecyclerView.Adapter<CreditItemListAd
         private final TextView tvName;
         private final TextView tvAmount;
         private final ImageView ivType;
+        private final LinearLayout layout;
 
         private CreditItemViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             ivType = (ImageView) itemView.findViewById(R.id.ivCreditType);
+            layout = itemView.findViewById(R.id.creditLinear);
         }
     }
 }

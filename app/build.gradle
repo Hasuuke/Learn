@@ -56,7 +56,5 @@ dependencies {
     def arch_version = "2.1.0"
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-
 
 }

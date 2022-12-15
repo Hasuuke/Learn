@@ -2,6 +2,7 @@ package vn.tdtu.mad.learn.Screens;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
     private void openCreditsActivity() {
         Intent intent = new Intent(this, CreditsActivity.class);
         startActivity(intent);
+
     }
 
     private void openShopActivity() {
@@ -172,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openTaskActivity() {
-
+        Intent intent = new Intent(this, TaskActivity.class);
+        startActivity(intent);
     }
 
     private void openVideoActivity() {
