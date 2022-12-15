@@ -69,33 +69,35 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate the database
-            // when it is first created
             mDao.deleteAllShop();
-            mDao.insert(new ShopItem("Mc Donalds", 22.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
-            mDao.insert(new ShopItem("Burger King", 28.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
-            mDao.insert(new ShopItem("Fortnite", 290.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
+            mDao.insert(new ShopItem("Mc Donalds", 15, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, false));
+            mDao.insert(new ShopItem("Burger King", 35, "Discount 15% off! Redeem now for your discount!", ShopTypes.BURGER_KING, false));
+            mDao.insert(new ShopItem("Fortnite", 50, "Discount 20% off! Redeem now for your discount!", ShopTypes.FORTNITE, false));
 
-            mDao.insert(new ShopItem("Mc Donalds", 5.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.MC_DONALDS, true));
-            mDao.insert(new ShopItem("Burger King", 5.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.BURGER_KING, true));
-            mDao.insert(new ShopItem("Fortnite", 100.00, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, true));
+
+            mDao.insert(new ShopItem("Fortnite", 50, "Discount 10% off! Redeem now for your discount!", ShopTypes.FORTNITE, true));
 
 
             mDao.deleteAll();
-            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 22.00, false));
-            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 25.00, false));
-            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 40.00, false));
-            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, false));
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
+            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
+            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
+            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
+            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 25, false));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 50, false));
+            mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 25, false));
+            mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 30, false));
 
-            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 20.00, true));
-            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 25.00, true));
+            mDao.insert(new TaskItem("DNA Transcription", "Describe the DNA Transcription", BIOLOGY, 5.00, true));
+            mDao.insert(new TaskItem("Polynoms", "Solve the Polynoms", MATHS, 20.00, true));
             mDao.insert(new TaskItem("Spheres", "Name all Spheres of the Earth", GEOLOGY, 50.00, true));
             mDao.insert(new TaskItem("Essay", "Discuss the Covid 19 Pandemic", ENGLISH, 25.00, true));
 
             return null;
         }
     }
-
-
 }

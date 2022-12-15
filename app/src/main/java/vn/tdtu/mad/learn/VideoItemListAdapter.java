@@ -4,15 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import vn.tdtu.mad.learn.database.Items.ShopItem;
-import vn.tdtu.mad.learn.database.Items.TaskItem;
 import vn.tdtu.mad.learn.database.Items.VideoItem;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class VideoItemListAdapter extends RecyclerView.Adapter<VideoItemListAdapter.VideoItemViewHolder>{
@@ -36,7 +35,9 @@ public class VideoItemListAdapter extends RecyclerView.Adapter<VideoItemListAdap
         if (mVideoItems != null) {
             VideoItem current = mVideoItems.get(position);
             holder.tvName.setText(current.getName());
-            holder.tvDuration.setText(String.valueOf(current.getDuration()));
+            BigDecimal bigDecimal = new BigDecimal(current.getDuration());
+            bigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_UP);
+            holder.tvDuration.setText(String.valueOf(bigDecimal.doubleValue()));
             holder.tvAuthor.setText(current.getAuthor());
             holder.rbRating.setMax(5);
             holder.rbRating.setRating(current.getRating());

@@ -1,7 +1,6 @@
 package vn.tdtu.mad.learn;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import vn.tdtu.mad.learn.Screens.MapsActivity;
+import vn.tdtu.mad.learn.Screens.ShopActivity;
 import vn.tdtu.mad.learn.database.Items.ShopItem;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapter.ShopItemViewHolder> {
@@ -20,6 +20,7 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
     private final LayoutInflater mInflater;
     private List<ShopItem> mShopItems;
     private final RecyclerViewInterface recyclerViewInterface;
+
 
     public ShopItemListAdapter(Context context, RecyclerViewInterface recyclerViewInterface) {
         mInflater = LayoutInflater.from(context);
@@ -39,20 +40,28 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
             ShopItem current = mShopItems.get(position);
             holder.tvName.setText(current.getmName());
             holder.tvAmount.setText(String.valueOf(current.getmAmount())+ " Credits");
-            holder.tvMising.setText("20 Credits missing");
             holder.tvOffer.setText(current.getmOffer());
-            holder.btnRedemeed.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, MapsActivity.class);
-                    context.startActivity(intent);
-                }
-            });
+
+            double result = current.getmAmount() -ShopActivity.result;
+            if(result<=0){
+
+
+                holder.tvMising.setText("Enough Credits");
+
+            }
+            else{
+                BigDecimal bd = new BigDecimal(result);
+                bd.setScale(2, RoundingMode.HALF_UP);
+                holder.tvMising.setText( bd.doubleValue() +" Credits missing");
+            }
+
+
             switch(current.getmShopType()){
                 case MC_DONALDS:
                     holder.ivShopType.setBackgroundResource(R.drawable.mcdonalds);
                     break;
                 case BURGER_KING:
+
                     holder.ivShopType.setBackgroundResource(R.drawable.burger_king);
                     break;
                 case FORTNITE:
@@ -73,6 +82,10 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
     public void setShopItems(List<ShopItem> shopItems){
         mShopItems = shopItems;
         notifyDataSetChanged();
+    }
+
+    public ShopItem getShopItem(int pos){
+        return mShopItems.get(pos);
     }
 
 

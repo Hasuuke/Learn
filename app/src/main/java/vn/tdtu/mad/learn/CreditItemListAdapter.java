@@ -76,7 +76,6 @@ public class CreditItemListAdapter extends RecyclerView.Adapter<CreditItemListAd
             }
 
         } else {
-            // Covers the case of data not being ready yet.
             holder.tvName.setText("No Data");
             holder.tvAmount.setText("No Data");
 
@@ -88,8 +87,7 @@ public class CreditItemListAdapter extends RecyclerView.Adapter<CreditItemListAd
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
+
     @Override
     public int getItemCount() {
         if (mCreditList != null)

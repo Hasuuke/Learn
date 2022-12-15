@@ -32,6 +32,8 @@ public class ShopActivity extends AppCompatActivity implements RecyclerViewInter
     private List<TaskItem> taskItemList;
     private List<ShopItem> shopItemList;
     private ShopItemListAdapter adapter;
+    private int index = 0;
+    public static int result = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,6 @@ public class ShopActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
 
-
         button_shop_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,13 +87,12 @@ public class ShopActivity extends AppCompatActivity implements RecyclerViewInter
 
     }
 
-    private void updateCredit(){
-        int plus=0;
-        int minus=0;
-        if(taskItemList == null ){
+    private void updateCredit() {
+        int plus = 0;
+        int minus = 0;
+        if (taskItemList == null) {
             Log.e("Live", "TaskList empty");
-        }
-        else {
+        } else {
 
             for (TaskItem taskitem :
                     taskItemList) {
@@ -100,22 +100,21 @@ public class ShopActivity extends AppCompatActivity implements RecyclerViewInter
             }
         }
 
-        if(shopItemList == null ){
+        if (shopItemList == null) {
             Log.e("Live", "ShopList empty");
-        }
-        else {
+        } else {
 
             for (ShopItem shopItem :
                     shopItemList) {
                 minus += shopItem.mAmount;
             }
         }
-        int result = plus - minus;
-        tvTotalCredits.setText("You have " + result+ " Credits");
+        result = plus - minus;
+        tvTotalCredits.setText("You have " + result + " Credits");
     }
 
     private void openVideoActivity() {
-        Intent intent = new Intent(this,VideoActivity.class);
+        Intent intent = new Intent(this, VideoActivity.class);
         startActivity(intent);
     }
 
@@ -125,7 +124,48 @@ public class ShopActivity extends AppCompatActivity implements RecyclerViewInter
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            ShopItem shopItem = adapter.getShopItem(index);
+            Log.e("INDEX", "Old ShopItem selected: " + shopItem);
+            shopItem.setmRedeemed(true);
+            mItemViewModel.update(shopItem);
+            Log.e("INDEX", "ShopItem updated: " + shopItem);
+
+        }
+    }
+
+
+    @Override
     public void onItemClick(int position) {
         Log.e("SHOP", String.valueOf(position));
+        index = position;
+        ShopItem current = adapter.getShopItem(position);
+        Intent intent = new Intent(this, MapsActivity.class);
+        switch (current.getmShopType()) {
+            case MC_DONALDS:
+                intent.putExtra("Type", "McDonalds");
+                break;
+            case BURGER_KING:
+                intent.putExtra("Type", "BurgerKing");
+                break;
+            case FORTNITE:
+                intent.putExtra("Type", "Fortnite");
+                break;
+            default:
+                break;
+        }
+
+        Log.e("@@@@", "Total Credits"+ result);
+        if (result - current.getmAmount() < 0) {
+            intent.putExtra("Redeemable","0");
+            Log.e("@@@@", "Not Redeemable");
+        }
+        else {
+            intent.putExtra("Redeemable","1");
+            Log.e("@@@@", "redeemable");
+        }
+        startActivityForResult(intent, 2);
     }
 }

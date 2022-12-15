@@ -44,6 +44,9 @@ public class VideoActivity extends AppCompatActivity implements RecyclerViewInte
 
         List<VideoItem> videoItems = new ArrayList<>();
         videoItems.add(new VideoItem("Protein Synthesis", "oefAI2x2CQM", "Amoeba Sisters", "Biology", 8.46f, 4.0f));
+        videoItems.add(new VideoItem("Introduction to Plate Tectonics", "fzhPmemffII", "Frank Gregorio", "Geology", 3.27f, 5f));
+        videoItems.add(new VideoItem("Introduction to Polynomials", "nPPNgin7W7Y", "Professor Dave Explains", "Maths", 5.12f, 4.0f));
+        videoItems.add(new VideoItem("Writing Skills: The Paragraph", "0IFDuhdB2Hk", "Adams English Lessons", "English", 14.32f, 5f));
         adapter.setVideoItems(videoItems);
 
 

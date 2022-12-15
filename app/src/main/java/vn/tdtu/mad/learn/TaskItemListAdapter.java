@@ -91,7 +91,6 @@ public class TaskItemListAdapter extends RecyclerView.Adapter<TaskItemListAdapte
         else return 0;
     }
 
-
     class TaskItemViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvName;
         private final TextView tvDescription;
