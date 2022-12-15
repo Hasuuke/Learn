@@ -63,7 +63,6 @@ public class ShopItemListAdapter extends RecyclerView.Adapter<ShopItemListAdapte
                     holder.ivShopType.setBackgroundResource(R.drawable.mcdonalds);
                     break;
                 case BURGER_KING:
-
                     holder.ivShopType.setBackgroundResource(R.drawable.burger_king);
                     break;
                 case FORTNITE:
