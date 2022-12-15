@@ -1,6 +1,10 @@
 package vn.tdtu.mad.learn.Screens;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import vn.tdtu.mad.learn.R;
@@ -43,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         btnHome = findViewById(R.id.btn_Main_home);
         btnShop = findViewById(R.id.btn_Main_shop);
         btnVideos = findViewById(R.id.btn_Main_videos);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Notification","Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
 
         mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
@@ -101,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 openVideoActivity();
             }
         });
+
+
     }
 
     private void updateCredit(){
@@ -137,18 +153,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openShopActivity() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                startActivity(intent);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"Notification");
+                builder.setContentTitle("Sale Off!");
+                builder.setContentText("Special Offers Are there in the shop");
+                builder.setSmallIcon(R.drawable.notification);
+                builder.setAutoCancel(true);
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
+                managerCompat.notify(1,builder.build());
+            }
+        }, 5000);
         Intent intent = new Intent(this, ShopActivity.class);
         startActivity(intent);
     }
 
     private void openTaskActivity() {
-        Intent intent = new Intent(this, TaskActivity.class);
-        startActivity(intent);
+
     }
 
     private void openVideoActivity() {
         Intent intent = new Intent(this, VideoActivity.class);
         startActivity(intent);
+
     }
 
 }
