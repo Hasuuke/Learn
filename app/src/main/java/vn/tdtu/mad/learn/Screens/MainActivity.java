@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
+        showOfferNotification();
 
         iv_Videos = (ImageView) findViewById(R.id.iv_Main_Videos);
         iv_Task = (ImageView) findViewById(R.id.iv_Main_Task);
@@ -119,6 +120,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showOfferNotification(){
+        Intent intent_alarm = new Intent(MainActivity.this,ReminderBroadcast.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,intent_alarm,0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        long timeAtButtonClick = System.currentTimeMillis();
+        long tenSecondInMillis = 500 * 10;
+        alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtButtonClick + tenSecondInMillis,pendingIntent);
+    }
+
     private void createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "Sale Off!";
@@ -131,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+
 
     private void updateCredit(){
         int plus=0;
@@ -168,15 +181,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void openShopActivity() {
         Intent intent = new Intent(this, ShopActivity.class);
-        Intent intent_alarm = new Intent(MainActivity.this,ReminderBroadcast.class);
-
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,intent_alarm,0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        long timeAtButtonClick = System.currentTimeMillis();
-        long tenSecondInMillis = 500 * 10;
-        alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtButtonClick + tenSecondInMillis,pendingIntent);
-
         startActivity(intent);
 
     }

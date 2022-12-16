@@ -24,10 +24,8 @@ public class ReminderBroadcast extends BroadcastReceiver {
                 .setContentTitle("Sale Off!")
                 .setContentText(" Special Offers are there in the shop")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent);
-        
-
-
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(200,builder.build());
