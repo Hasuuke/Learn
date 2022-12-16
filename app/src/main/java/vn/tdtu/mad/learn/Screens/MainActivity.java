@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ShopActivity.class);
         Intent intent_alarm = new Intent(MainActivity.this,ReminderBroadcast.class);
 
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,intent_alarm,0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         long timeAtButtonClick = System.currentTimeMillis();

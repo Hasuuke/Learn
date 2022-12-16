@@ -4,7 +4,7 @@
 
     <string name="title_activity_google_map">GoogleMap</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="google_map_key">AIzaSyCTQSVjeZ9g71osEADGkzoP3i4gJsn4qeI</string>
+    <string name="GOOGLE_MAP_KEY">AIzaSyCTQSVjeZ9g71osEADGkzoP3i4gJsn4qeI</string>
 
 =======
     <!-- TODO: Remove or change this placeholder text -->
